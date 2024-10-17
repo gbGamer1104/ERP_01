@@ -11,13 +11,13 @@ endereco varchar (25)
 );
 
 create table setores(
-setor_id  int(11) auto_increment primary key,
+setor_id int(11) auto_increment primary key,
 nome varchar(100) not null,
 descricao text
 );
 
 create table categorias(
-categoria_id  int(11) auto_increment primary key,
+categoria_id int(11) auto_increment primary key,
 nome varchar(100) not null,
 descricao text
 );
@@ -117,8 +117,7 @@ INSERT INTO categorias (nome, descricao) VALUES
 ('Categoria O', 'Categoria de acessórios eletrônicos'),
 ('Categoria P', 'Categoria de artigos para pets'),
 ('Categoria Q', 'Categoria de produtos de beleza'),
-('Categoria R', 'Categoria de alimentos congelados'),
-;
+('Categoria R', 'Categoria de alimentos congelados');
 
 INSERT INTO fornecedores (nome, telefone, email, endereco) VALUES
 ('Fornecedor A', '11999990000', 'fornecedorA@example.com', 'Rua 1, Nº 100'),
@@ -135,7 +134,7 @@ INSERT INTO fornecedores (nome, telefone, email, endereco) VALUES
 ('Fornecedor L', '31999990011', 'fornecedorL@example.com', 'Rua 12, Nº 111');
 
 
-INSERT INTO produtos (nome, descricao, preco, quantidade, id_fornecedor, id_categoria) VALUES
+INSERT INTO produtos (nome, descricao, preco_venda, quantidade_estoque, fornecedor_id, categoria_id) VALUES
 ('Produto A1', 'Descrição do Produto A1', 25.90, 50, 1, 1),
 ('Produto A2', 'Descrição do Produto A2', 15.75, 100, 2, 2),
 ('Produto A3', 'Descrição do Produto A3', 45.20, 30, 3, 3),
@@ -147,77 +146,18 @@ INSERT INTO produtos (nome, descricao, preco, quantidade, id_fornecedor, id_cate
 ('Produto A9', 'Descrição do Produto A9', 90.00, 20, 9, 9),
 ('Produto A10', 'Descrição do Produto A10', 45.99, 10, 10, 10),
 ('Produto A11', 'Descrição do Produto A11', 39.00, 150, 11, 11),
-('Produto A12', 'Descrição do Produto A12', 25.50, 80, 12, 12),
-('Produto A13', 'Descrição do Produto A13', 75.20, 50, 13, 13),
-('Produto A14', 'Descrição do Produto A14', 180.00, 15, 14, 14),
-('Produto A15', 'Descrição do Produto A15', 300.00, 5, 15, 15),
-('Produto A16', 'Descrição do Produto A16', 22.80, 40, 16, 16),
-('Produto A17', 'Descrição do Produto A17', 150.00, 10, 17, 17),
-('Produto A18', 'Descrição do Produto A18', 12.99, 120, 18, 18),
-('Produto A19', 'Descrição do Produto A19', 8.99, 300, 19, 19),
-('Produto A20', 'Descrição do Produto A20', 400.00, 8, 20, 20),
-('Produto A21', 'Descrição do Produto A21', 99.99, 22, 21, 21),
-('Produto A22', 'Descrição do Produto A22', 14.50, 60, 22, 22),
-('Produto A23', 'Descrição do Produto A23', 49.90, 90, 23, 23),
-('Produto A24', 'Descrição do Produto A24', 199.99, 7, 24, 24),
-('Produto A25', 'Descrição do Produto A25', 220.00, 6, 25, 25),
-('Produto A26', 'Descrição do Produto A26', 78.50, 70, 26, 26),
-('Produto A27', 'Descrição do Produto A27', 25.25, 150, 27, 27),
-('Produto A28', 'Descrição do Produto A28', 32.00, 40, 28, 28),
-('Produto A29', 'Descrição do Produto A29', 250.00, 5, 29, 29),
-('Produto A30', 'Descrição do Produto A30', 55.75, 100, 30, 30),
-('Produto A31', 'Descrição do Produto A31', 27.89, 200, 31, 31),
-('Produto A32', 'Descrição do Produto A32', 180.30, 9, 32, 32),
-('Produto A33', 'Descrição do Produto A33', 15.99, 250, 33, 33),
-('Produto A34', 'Descrição do Produto A34', 9.50, 500, 34, 34),
-('Produto A35', 'Descrição do Produto A35', 75.00, 45, 35, 35),
-('Produto A36', 'Descrição do Produto A36', 400.00, 5, 36, 36),
-('Produto A37', 'Descrição do Produto A37', 250.00, 12, 37, 37),
-('Produto A38', 'Descrição do Produto A38', 13.70, 80, 38, 38),
-('Produto A39', 'Descrição do Produto A39', 90.00, 25, 39, 39),
-('Produto A40', 'Descrição do Produto A40', 50.00, 35, 40, 40);
+('Produto A12', 'Descrição do Produto A12', 25.50, 80, 12, 12);
 
-INSERT INTO funcionarios (nome, cargo, salario, id_setor) VALUES
-('João Silva', 'Analista de Sistemas', 5000.00, 1),
-('Maria Oliveira', 'Gerente de Vendas', 7000.00, 2),
-('Carlos Souza', 'Coordenador de Logística', 5500.00, 3),
-('Ana Paula', 'Assistente Administrativo', 3000.00, 4),
-('Roberto Costa', 'Engenheiro de Produção', 6000.00, 5),
-('Fernanda Lima', 'Analista Financeiro', 4800.00, 6),
-('Marcelo Santos', 'Desenvolvedor de Software', 4500.00, 7),
-('Juliana Araújo', 'Técnico de Suporte', 3500.00, 8),
-('Ricardo Ferreira', 'Consultor de RH', 5200.00, 9),
-('Vanessa Souza', 'Gerente de Projetos', 8000.00, 10),
-('Bruno Carvalho', 'Auditor Interno', 6000.00, 11),
-('Renata Gomes', 'Supervisora de Segurança', 4200.00, 12),
-('Diego Martins', 'Analista de Marketing', 4700.00, 13),
-('Patrícia Almeida', 'Compradora', 5000.00, 14),
-('Rafael Almeida', 'Técnico de Manutenção', 3800.00, 15),
-('Letícia Castro', 'Especialista em TI', 6700.00, 16),
-('Fabiano Mendes', 'Analista de Comunicação', 4400.00, 17),
-('Camila Barbosa', 'Planejadora Estratégica', 7100.00, 18),
-('Pedro Moreira', 'Especialista em Compliance', 6300.00, 19),
-('Beatriz Costa', 'Supervisora de Suprimentos', 5400.00, 20),
-('Victor Ribeiro', 'Administrador de Dados', 4900.00, 21),
-('Gustavo Mendes', 'Coordenador de Riscos', 5500.00, 22),
-('Sara Almeida', 'Treinadora', 4000.00, 23),
-('Felipe Andrade', 'Gestor de Conhecimento', 5800.00, 24),
-('Marta Ferreira', 'Especialista em Marketing Digital', 6100.00, 25),
-('Luis Nogueira', 'Gerente de Produto', 7500.00, 26),
-('Paula Rocha', 'Consultora de Inovação', 6400.00, 27),
-('Danilo Lopes', 'Assistente Técnico', 3500.00, 28),
-('Karla Reis', 'Analista de TI', 4700.00, 29),
-('Eduardo Oliveira', 'Coordenador de Auditoria', 7200.00, 30),
-('Júlia Rocha', 'Gerente de Produção', 8000.00, 31),
-('Leandro Silva', 'Supervisor de Custos', 5300.00, 32),
-('Tereza Ribeiro', 'Gestora de Responsabilidade Social', 4900.00, 33),
-('Marcos Vinícius', 'Especialista em Segurança', 4600.00, 34),
-('Érica Batista', 'Engenheira de Processos', 6500.00, 35),
-('André Dias', 'Analista de Armazenagem', 4000.00, 36),
-('Fábio Martins', 'Consultor Externo', 4500.00, 37),
-('Lorena Carvalho', 'Especialista em Riscos', 5500.00, 38),
-('Henrique Ramos', 'Coordenador de Serviços Gerais', 4300.00, 39),
-('Sofia Mello', 'Engenheira de Desenvolvimento', 7600.00, 40);
+INSERT INTO funcionarios (nome, email, cargo, salario, data_admissao, setor_id) VALUES
+('João Silva', 'exemplo@email.com', 'Analista de Sistemas', 5000.00, '2021-01-15', 1),
+('Maria Oliveira', 'exemplo@email.com', 'Gerente de Vendas', 7000.00, '2020-03-12', 2),
+('Carlos Souza', 'exemplo@email.com', 'Coordenador de Logística', 5500.00, '2019-05-22', 3),
+('Ana Paula', 'exemplo@email.com', 'Assistente Administrativo', 3000.00, '2021-07-18', 4),
+('Roberto Costa', 'exemplo@email.com', 'Engenheiro de Produção', 6000.00, '2020-09-10', 5),
+('Fernanda Lima', 'exemplo@email.com', 'Analista Financeiro', 4800.00, '2018-11-05', 6),
+('Marcelo Santos', 'exemplo@email.com', 'Desenvolvedor de Software', 4500.00, '2021-02-27', 7);
+
+
 
 INSERT INTO estoque (produto_id, tipo_movimentacao, quantidade, data_movimentacao) VALUES
 (1, 'x-produto', 20, '2024-01-15 14:30:00'),
@@ -238,10 +178,7 @@ INSERT INTO funcionarios (nome, cargo, setor_id, telefone, email, data_admissao,
 ('Ana Costa', 'Vendedor', 4, '(41) 9955-4433', 'ana.costa@empresa.com', '2023-04-25', 3000.00, 'Dinheiro'),
 ('Luís Almeida', 'Técnico de TI', 5, '(51) 9944-3322', 'luis.almeida@empresa.com', '2023-05-30', 4000.00, 'Transferência Bancária'),
 ('Fernanda Rocha', 'Supervisor de Logística', 6, '(22) 9933-2211', 'fernanda.rocha@empresa.com', '2023-06-10', 4500.00, 'Cheque'),
-('Paulo Mendes', 'Analista de Marketing', 7, '(47) 9922-1100', 'paulo.mendes@empresa.com', '2023-07-15', 3200.00, 'Dinheiro'),
-('Sofia Nunes', 'Comprador', 8, '(48) 9911-0099', 'sofia.nunes@empresa.com', '2023-08-20', 2800.00, 'Transferência Bancária'),
-('Marcos Lima', 'Técnico de Manutenção', 9, '(11) 9900-8877', 'marcos.lima@empresa.com', '2023-09-25', 3100.00, 'Transferência Bancária'),
-('Raquel Faria', 'Advogada', 10, '(21) 9899-7766', 'raquel.faria@empresa.com', '2023-10-30', 5000.00, 'Transferência Bancária');
+('Paulo Mendes', 'Analista de Marketing', 7, '(47) 9922-1100', 'paulo.mendes@empresa.com', '2023-07-15', 3200.00, 'Dinheiro');
 
 INSERT INTO manutencoes (equipamento, descricao_problema, data_inicio, data_termino, tecnico_responsavel, status, responsavel_id) VALUES
 ('Máquina de Solda', 'Não liga após uso contínuo', '2024-02-01 08:00:00', '2024-02-03 17:00:00', 'Luís Almeida', 'funcional', 5),
