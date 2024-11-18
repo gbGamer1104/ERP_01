@@ -59,10 +59,6 @@ body {
     border-radius: 15px;
 }
 
-.sidebar .nav-link.active {
-
-}
-
 .sidebar .nav-link span {
     margin-left: 10px;
 }
@@ -121,6 +117,45 @@ body {
 .flex .form-group select,
 .flex .form-group input{
     width: 600px;
+}
+
+.btn-primary{
+    margin-top: 2%;
+    margin-left: 0%;
+    width: 100%;
+    background-color: var(--bg-purple);
+    border-color: var(--depp-purple);
+}
+
+.btn-primary:hover{
+    background-color: var(--depp-purple);
+    border-color: var(--bg-purple);
+}
+
+.btn-danger{
+    margin-top: 2%;
+    width: 100%;
+}
+
+.main-form{
+    margin-top: 5%;
+    margin-left: 0%;
+}
+
+label{
+    font-size: 20px;
+}
+
+.main-title{
+    margin-bottom: 4%;
+}
+
+.card{
+    margin-bottom: 4%;
+}
+
+.btn-create{
+    margin-bottom: 1%;
 }
 
 @media (max-width: 1200px) {

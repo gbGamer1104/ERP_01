@@ -88,30 +88,52 @@ include 'config.php';
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <div class="container">
                         <div class="row">
-                            <div class="col btn-create">
-                                <a href="create_page.php" class="btn btn-primary btn-create">Criar Ticket</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                                <?php
-                                    $result = $conn->query("SELECT * FROM manutencoes");
-                                    while($row = $result->fetch_assoc()){
-                                        echo "<div class='col-3'>";
-                                        echo "<div class='card'>";
-                                        echo "<div class='card-body'>";
-                                        echo "<h5 class='card-title'>{$row['equipamento']}</h5>";
-                                        echo "<p class='card-text'>{$row['descricao_problema']}</p>";
-                                        echo "<h6 class='card-subtitle mb-2 text-body-secondary'>Data Inicio: {$row['data_inicio']}</h6>";
-                                        echo "<h6 class='card-subtitle mb-2 text-body-secondary'>Data Termino: {$row['data_termino']}</h6>";
-                                        echo "<h6 class='card-subtitle mb-2 text-body-secondary'>Técnico Responsável: {$row['tecnico_responsavel']}</h6>";
-                                        echo "<h6 class='card-subtitle mb-2 text-body-secondary'>Status: {$row['status']}</h6>";
-                                        echo "<a href='editar.php?id={$row['manutencao_id']}' class='btn btn-primary btn-sm'>Editar</a>";
-                                        echo "<a href='deletar.php?id={$row['manutencao_id']}' class='btn btn-danger btn-sm' onclick=''return confirm(\"Tem certeza que deseja excluir este item?\")>Excluir</a>";
-                                        echo "</div>";
-                                        echo "</div>";
-                                        echo "</div>";
-                                    }
-                                ?>
+                            <div class="col-12 main-form">
+                                <form action="create.php" method="POST">
+                                    <h1 class="h2 main-title">Manutenção de Equipamentos</h1>
+                                    <div class="mb-3">
+                                        <label for="nome_equip" class="form-label">Nome do
+                                            Equipamento:</label>
+                                        <input type="text" class="form-control" id="nome_equip" name="nome_equip"
+                                            placeholder="" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="problema" class="form-label">Descrição do
+                                            problema:</label>
+                                        <textarea class="form-control" id="problema" name="problema"
+                                            rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="data_inicio" class="form-label">Data de Inicio:</label>
+                                        <input type="datetime-local" class="form-control" id="data_inicio" name="data_inicio"
+                                            placeholder="" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="data_termino" class="form-label">Data de
+                                            Termino:</label>
+                                        <input type="datetime-local" class="form-control" id="data_termino" name="data_termino"
+                                            placeholder="">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="tecnico_resp" class="form-label">Tecnico
+                                            Responsável:</label>
+                                        <select class="form-select" aria-label="Default select example" id="tecnico_resp" name="tecnico_resp" required>
+                                            <option selected>Tecnico Responsável</option>
+                                            <?php
+                                                $result = $conn->query("SELECT funcionario_id, nome FROM funcionarios");
+                                                while ($row = $result->fetch_assoc()){
+                                                    echo "<option value='{$row['funcionario_id']}'>{$row['nome']}</option>";
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <select class="form-select" aria-label="Default select example" id="status" name="status" required>
+                                        <option selected>Status</option>
+                                        <option value="quebrado">Quebrado</option>
+                                        <option value="funcional">Funcional</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary btn-lg send-btn">Criar Ticket</button>
+                                </form>
                             </div>
                         </div>
 
